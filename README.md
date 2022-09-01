@@ -1,2 +1,3 @@
 # ConfigFiles
- This is my personal set of config files for applications I use.
+
+This is my personal set of config files for applications I use.
