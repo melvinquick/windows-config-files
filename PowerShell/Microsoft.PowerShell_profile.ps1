@@ -1,3 +1,8 @@
+# Functions
+function Get-Profile {
+  & $PROFILE
+}
+
 Invoke-Expression (&starship init powershell)
 Set-Location ~
 Clear-Host
