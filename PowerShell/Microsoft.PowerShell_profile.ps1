@@ -1,6 +1,7 @@
 Invoke-Expression (&starship init powershell)
 Set-Location ~
 Clear-Host
+Get-Content "~\Documents\PowerShell\banner.txt"
 
 # Import the Chocolatey Profile that contains the necessary code to enable
 # tab-completions to function for `choco`.
