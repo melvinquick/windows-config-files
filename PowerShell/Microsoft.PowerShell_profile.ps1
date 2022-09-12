@@ -4,7 +4,7 @@ function Get-Profile {
 }
 
 # Aliases
-Set-Alias -Name Reload -Value Get-Profile
+Set-Alias -Name ReloadProfile -Value Get-Profile
 
 Invoke-Expression (&starship init powershell)
 Set-Location ~
