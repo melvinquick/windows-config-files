@@ -3,6 +3,9 @@ function Get-Profile {
   & $PROFILE
 }
 
+# Aliases
+Set-Alias -Name Reload -Value Get-Profile
+
 Invoke-Expression (&starship init powershell)
 Set-Location ~
 Clear-Host
