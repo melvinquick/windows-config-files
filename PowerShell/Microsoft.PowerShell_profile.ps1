@@ -2,6 +2,29 @@
 # FUNCTIONS
 # =========
 #region
+function Get-LoggedOnUsers {
+  param (
+      $ComputerName
+  )
+
+  # variables
+  $computer = $ComputerName
+  $user = ""
+
+  # main
+  if ($PSBoundParameters.ContainsKey("ComputerName")) {
+      Write-Host "`nComputerName: $computer"
+      $user = (&"query" user /SERVER:$computer) -replace "^[\s]USERNAME[\s]+SESSIONNAME.*$", "" -replace "[\s]{2,}", "," -replace ">", "" | ConvertFrom-Csv -Delimiter "," -Header "Username", "SessionName", "Id", "State", "IdleTime", "LogonTime"
+      Write-Output $user
+  }
+  else {
+      $computer = HOSTNAME.EXE
+      Write-Host "`nComputerName: $computer"
+      $user = (&"query" user) -replace "^[\s]USERNAME[\s]+SESSIONNAME.*$", "" -replace "[\s]{2,}", "," -replace ">", "" | ConvertFrom-Csv -Delimiter "," -Header "Username", "SessionName", "Id", "State", "IdleTime", "LogonTime"
+      Write-Output $user
+  }
+}
+
 function Get-Profile {
   & $PROFILE
 }
@@ -98,6 +121,7 @@ function Set-Wallpaper {
 # ALIASES
 # =======
 #region
+Set-Alias -Name GetUsers -Value Get-LoggedOnUsers
 Set-Alias -Name ReloadProfile -Value Get-Profile
 Set-Alias -Name Wallpaper -Value Set-Wallpaper
 #endRegion
