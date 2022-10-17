@@ -9,18 +9,36 @@ function Get-LoggedOnUsers {
 
   # variables
   $computer = $ComputerName
-  $user = ""
+  $user = @()
 
   # main
   if ($PSBoundParameters.ContainsKey("ComputerName")) {
       Write-Host "`nComputerName: $computer"
       $user = (&"query" user /SERVER:$computer) -replace "^[\s]USERNAME[\s]+SESSIONNAME.*$", "" -replace "[\s]{2,}", "," -replace ">", "" | ConvertFrom-Csv -Delimiter "," -Header "Username", "SessionName", "Id", "State", "IdleTime", "LogonTime"
+      for ($i = 0; $i -lt $user.Count; $i++) {
+        if ($null -eq $user[$i].LogonTime) {
+          $user[$i].LogonTime = $user[$i].IdleTime
+          $user[$i].IdleTime = $user[$i].State
+          $user[$i].State = $user[$i].Id
+          $user[$i].Id = $user[$i].SessionName
+          $user[$i].SessionName = ""
+        }
+      }
       Write-Output $user
   }
   else {
       $computer = HOSTNAME.EXE
       Write-Host "`nComputerName: $computer"
       $user = (&"query" user) -replace "^[\s]USERNAME[\s]+SESSIONNAME.*$", "" -replace "[\s]{2,}", "," -replace ">", "" | ConvertFrom-Csv -Delimiter "," -Header "Username", "SessionName", "Id", "State", "IdleTime", "LogonTime"
+      for ($i = 0; $i -lt $user.Count; $i++) {
+        if ($null -eq $user[$i].LogonTime) {
+          $user[$i].LogonTime = $user[$i].IdleTime
+          $user[$i].IdleTime = $user[$i].State
+          $user[$i].State = $user[$i].Id
+          $user[$i].Id = $user[$i].SessionName
+          $user[$i].SessionName = ""
+        }
+      }
       Write-Output $user
   }
 }
