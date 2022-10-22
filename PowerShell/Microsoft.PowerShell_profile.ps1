@@ -25,7 +25,7 @@ function Get-Latency {
       [string]
       $outputName = "latency.csv",
 
-      # The name and type you'd like the output file to be saved as
+      # The amount of time you'd like to wait between pings
       [Parameter (Mandatory = $false)]
       [int]
       $waitTime = 10
