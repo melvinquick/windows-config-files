@@ -40,7 +40,7 @@ function Get-Latency {
   $time = (Get-Date).Hour
 
   # Main
-  while ($time -le $endTime) {
+  while ($time -lt $endTime) {
 
       # Get the date and then add it to $data
       $date = Get-Date
