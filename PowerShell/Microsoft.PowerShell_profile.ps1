@@ -2,6 +2,72 @@
 # FUNCTIONS
 # =========
 #region
+function Get-Latency {
+  param (
+      # Time you'd like the function to stop running in 24 hour time (good values are 1, 2, 3, ..., 24) (default is 24)
+      [Parameter (Mandatory = $false)]
+      [ValidateSet (1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24)]
+      [int]
+      $endTime = 24,
+
+      # Computer Name, IP Address, or URL you'd like to ping (default is localhost)
+      [Parameter (Mandatory = $false)]
+      [string]
+      $pingAddress = "localhost",
+
+      # The location you'd like to output to be saved (default is ~\Documents)
+      [Parameter (Mandatory = $false)]
+      [string]
+      $outputLocation = "~\Documents",
+
+      # The name and type you'd like the output file to be saved as
+      [Parameter (Mandatory = $false)]
+      [string]
+      $outputName = "latency.csv",
+
+      # The name and type you'd like the output file to be saved as
+      [Parameter (Mandatory = $false)]
+      [int]
+      $waitTime = 10
+  )
+
+  # Variables
+  $data = New-Object -TypeName psobject
+  $dataCollection = @()
+  $date = ""
+  $latency = 0
+  $output = "$outputLocation\$outputName"
+  $time = (Get-Date).Hour
+
+  # Main
+  while ($time -le $endTime) {
+
+      # Get the date and then add it to $data
+      $date = Get-Date
+      $data | Add-Member -MemberType NoteProperty -Name Date -Value $date
+
+      # Ping entered computer/ip/url and select only the response time then add it to $data
+      $latency = Test-Connection -Ping $pingAddress -Count 1 | ForEach-Object { $_.Latency }
+      $data | Add-Member -MemberType NoteProperty -Name Latency -Value $latency
+      
+      # Put $data in $dataCollection
+      $dataCollection += $data
+
+      # Export to CSV
+      $dataCollection | Export-Csv -LiteralPath $output
+
+      # Reset $data back to a new PSObject
+      $data = New-Object -TypeName psobject
+
+      # Sleep for 10 seconds
+      Start-Sleep -Seconds $waitTime
+      
+      # Set time variable to check for end condition
+      $time = (Get-Date).Hour
+
+  }
+}
+
 function Get-LoggedOnUsers {
   param (
       $ComputerName
@@ -47,92 +113,6 @@ function Get-Profile {
   & $PROFILE
 }
 
-function Set-Wallpaper {
-  param (
-    [string]$Path,
-    [ValidateSet('Tile', 'Center', 'Stretch', 'Fill', 'Fit', 'Span')]
-    [string]$Style = 'Fill'
-  )
-
-  begin {
-    try {
-      Add-Type @"
-              using System;
-              using System.Runtime.InteropServices;
-              using Microsoft.Win32;
-              namespace Wallpaper
-              {
-                  public enum Style : int
-                  {
-                    Tile, Center, Stretch, Fill, Fit, Span, NoChange
-                  }
-
-                  public class Setter
-                  {
-                    public const int SetDesktopWallpaper = 20;
-                    public const int UpdateIniFile = 0x01;
-                    public const int SendWinIniChange = 0x02;
-                    [DllImport( "user32.dll", SetLastError = true, CharSet = CharSet.Auto )]
-                    private static extern int SystemParametersInfo ( int uAction, int uParam, string lpvParam, int fuWinIni );
-                    public static void SetWallpaper ( string path, Wallpaper.Style style )
-                      {
-                      SystemParametersInfo( SetDesktopWallpaper, 0, path, UpdateIniFile | SendWinIniChange );
-                      RegistryKey key = Registry.CurrentUser.OpenSubKey( "Control Panel\\Desktop", true );
-                      switch( style )
-                      {
-                        case Style.Tile :
-                        key.SetValue( @"WallpaperStyle", "0" ) ;
-                        key.SetValue( @"TileWallpaper", "1" ) ;
-                        break;
-                        case Style.Center :
-                        key.SetValue( @"WallpaperStyle", "0" ) ;
-                        key.SetValue( @"TileWallpaper", "0" ) ;
-                        break;
-                        case Style.Stretch :
-                        key.SetValue( @"WallpaperStyle", "2" ) ;
-                        key.SetValue( @"TileWallpaper", "0" ) ;
-                        break;
-                        case Style.Fill :
-                        key.SetValue( @"WallpaperStyle", "10" ) ;
-                        key.SetValue( @"TileWallpaper", "0" ) ;
-                        break;
-                        case Style.Fit :
-                        key.SetValue( @"WallpaperStyle", "6" ) ;
-                        key.SetValue( @"TileWallpaper", "0" ) ;
-                        break;
-                        case Style.Span :
-                        key.SetValue( @"WallpaperStyle", "22" ) ;
-                        key.SetValue( @"TileWallpaper", "0" ) ;
-                        break;
-                        case Style.NoChange :
-                        break;
-                      }
-                      key.Close();
-                    }
-                  }
-              }
-"@
-    }
-    catch {}
-
-    $StyleNum = @{
-      Tile    = 0
-      Center  = 1
-      Stretch = 2
-      Fill    = 3
-      Fit     = 4
-      Span    = 5
-    }
-  }
-
-  process {
-    [Wallpaper.Setter]::SetWallpaper($Path, $StyleNum[$Style])
-
-    # sometimes the wallpaper only changes after the second run, so I'll run it twice!
-    Start-Sleep -ms 200
-    [Wallpaper.Setter]::SetWallpaper($Path, $StyleNum[$Style])
-  }
-}
 #endRegion
 
 # =======
@@ -141,7 +121,7 @@ function Set-Wallpaper {
 #region
 Set-Alias -Name GetUsers -Value Get-LoggedOnUsers
 Set-Alias -Name ReloadProfile -Value Get-Profile
-Set-Alias -Name Wallpaper -Value Set-Wallpaper
+Set-Alias -Name GetLatency -Value Get-Latency
 #endRegion
 
 # =======
