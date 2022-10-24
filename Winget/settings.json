@@ -2,11 +2,110 @@
     "$schema": "https://aka.ms/winget-settings.schema.json",
 
     // For documentation on these settings, see: https://aka.ms/winget-settings
-    // "source": {
-    //    "autoUpdateIntervalInMinutes": 5
-    // },
+    
+    "source": {
+        // Values for "autoUpdateIntervalInMinutes": can be any positive integer
+            // "autoUpdateIntervalInMinutes": 0 // disable
+            // "autoUpdateIntervalInMinutes": 5 // default
+    },
 
     "visual": {
-        "progressBar": "rainbow"
+        // Values for "progressBar":
+            // "progressBar": "accent" // default
+            // "progressBar": "retro"
+            "progressBar": "rainbow"
+    },
+
+    "installBehavior": {
+        // Values for "disableInstallNotes":
+            // "defaultInstallNotes": false, // default
+            // "disableInstallNotes": true,
+
+        // Values for "portablePackageUserRoot":
+            // "portablePackageUserRoot": "%LOCALAPPDATA%/Microsoft/WinGet/Packages/", //default
+
+        // Values for "portablePackageMachineRoot": 
+            // "portablePackageMachineRoot": "%PROGRAMFILES%/WinGet/Packages/", //default
+
+        // Values for "preferences":
+            // "preferences": {
+                // Values for "scope":
+                    // "scope": "user",
+                    // "scope": "machine",
+                
+                // Values for "locale": uses bcp47 language tag
+                    // "locale": [ "en-US" ],
+                
+                // Values for "architectures": only architectures compatible with your system can be selected
+                    // "architectures": ["x64"]
+            // }
+    },
+
+    "uninstallBehavior": {
+        // Values for "purgePortablePackage":
+            // "purgePortablePackage": false, // default
+            // "purgePortablePackage": true,
+
+        // Values for "defaultInstallRoot": the actual location is obtained by appending the package ID to the root
+            // "defaultInstallRoot": "C:/installRoot"
+    },
+
+    "telemetry": {
+        // Values for "disable":
+            // "disable": false
+            "disable": true
+    },
+
+    "logging": {
+        // Values for "level"
+            // "level": "verbose"
+            // "level": "info" // default
+            // "level": "warning"
+            // "level": "error"
+            // "level": "critical"
+    },
+
+    "network": {
+        // Values for "downloader":
+            // "downloader": "default", // default
+            // "downloader": "wininet",
+            // "downloader": "do",
+        
+        // Values for "doProgressTimeoutInSeconds":
+            // "doProgressTimeoutInSeconds": 1 // minimum
+            // "doProgressTimeoutInSeconds": 60 // default
+            // "doProgressTimeoutInSeconds": 600 // maximum
+    },
+
+    "interactivity": {
+        // Values for "disable":
+            // "disable": false
+            "disable": true
+    },
+
+    "experimentalFeatures": {
+        // Values for "experimentalCmd":
+            // "experimentalCmd": false,
+            // "experimentalCmd": true,
+        
+        // Values for "experimentalArg":
+            // "experimentalArg": false,
+            // "experimentalArg": true,
+
+        // Values for "zipInstall":
+            // "zipInstall": false,
+            // "zipInstall": true,
+
+        // Values for "directMSI":
+            // "directMSI": false,
+            // "directMSI": true,
+
+        // Values for "openLogsArgument":
+            // "openLogsArgument": false,
+            // "openLogsArgument": true,
+
+        // Values for "dependencies":
+            // "dependencies": false
+            // "dependencies": true
     }
 }
