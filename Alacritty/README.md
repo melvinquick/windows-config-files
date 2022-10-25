@@ -1,1 +1,1 @@
-To use this config for Alacritty, please put it in this location: %APPDATA%\alacritty\
+To use this config for Alacritty, please put it in this location: %APPDATA%\Alacritty\
