@@ -440,7 +440,7 @@ font:
 #   - (Windows) powershell
 shell:
 #  program: /bin/bash
-  program: C:\Program Files\PowerShell\7\pwsh.exe
+  program: C:\Program Files\PowerShell\7\pwsh.exe -nologo
 #  args:
 #    - --login
 
