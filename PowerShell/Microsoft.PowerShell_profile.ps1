@@ -2,6 +2,47 @@
 # FUNCTIONS
 # =========
 #region
+function Get-CurrentUsers {
+  param (
+    $ComputerName
+  )
+
+  # variables
+  $computer = $ComputerName
+  $user = @()
+
+  # main
+  if ($PSBoundParameters.ContainsKey("ComputerName")) {
+    Write-Host "`nComputerName: $computer"
+    $user = (&"query" user /SERVER:$computer) -replace "^[\s]USERNAME[\s]+SESSIONNAME.*$", "" -replace "[\s]{2,}", "," -replace ">", "" | ConvertFrom-Csv -Delimiter "," -Header "Username", "SessionName", "Id", "State", "IdleTime", "LogonTime"
+    for ($i = 0; $i -lt $user.Count; $i++) {
+      if ($null -eq $user[$i].LogonTime) {
+        $user[$i].LogonTime = $user[$i].IdleTime
+        $user[$i].IdleTime = $user[$i].State
+        $user[$i].State = $user[$i].Id
+        $user[$i].Id = $user[$i].SessionName
+        $user[$i].SessionName = ""
+      }
+    }
+    Write-Output $user
+  }
+  else {
+    $computer = HOSTNAME.EXE
+    Write-Host "`nComputerName: $computer"
+    $user = (&"query" user) -replace "^[\s]USERNAME[\s]+SESSIONNAME.*$", "" -replace "[\s]{2,}", "," -replace ">", "" | ConvertFrom-Csv -Delimiter "," -Header "Username", "SessionName", "Id", "State", "IdleTime", "LogonTime"
+    for ($i = 0; $i -lt $user.Count; $i++) {
+      if ($null -eq $user[$i].LogonTime) {
+        $user[$i].LogonTime = $user[$i].IdleTime
+        $user[$i].IdleTime = $user[$i].State
+        $user[$i].State = $user[$i].Id
+        $user[$i].Id = $user[$i].SessionName
+        $user[$i].SessionName = ""
+      }
+    }
+    Write-Output $user
+  }
+}
+
 function Get-Latency {
   param (
     # Time you'd like the function to stop running in 24 hour time (good values are 1, 2, 3, ..., 24) (default is 24)
@@ -68,60 +109,16 @@ function Get-Latency {
   }
 }
 
-function Get-LoggedOnUsers {
-  param (
-    $ComputerName
-  )
-
-  # variables
-  $computer = $ComputerName
-  $user = @()
-
-  # main
-  if ($PSBoundParameters.ContainsKey("ComputerName")) {
-    Write-Host "`nComputerName: $computer"
-    $user = (&"query" user /SERVER:$computer) -replace "^[\s]USERNAME[\s]+SESSIONNAME.*$", "" -replace "[\s]{2,}", "," -replace ">", "" | ConvertFrom-Csv -Delimiter "," -Header "Username", "SessionName", "Id", "State", "IdleTime", "LogonTime"
-    for ($i = 0; $i -lt $user.Count; $i++) {
-      if ($null -eq $user[$i].LogonTime) {
-        $user[$i].LogonTime = $user[$i].IdleTime
-        $user[$i].IdleTime = $user[$i].State
-        $user[$i].State = $user[$i].Id
-        $user[$i].Id = $user[$i].SessionName
-        $user[$i].SessionName = ""
-      }
-    }
-    Write-Output $user
-  }
-  else {
-    $computer = HOSTNAME.EXE
-    Write-Host "`nComputerName: $computer"
-    $user = (&"query" user) -replace "^[\s]USERNAME[\s]+SESSIONNAME.*$", "" -replace "[\s]{2,}", "," -replace ">", "" | ConvertFrom-Csv -Delimiter "," -Header "Username", "SessionName", "Id", "State", "IdleTime", "LogonTime"
-    for ($i = 0; $i -lt $user.Count; $i++) {
-      if ($null -eq $user[$i].LogonTime) {
-        $user[$i].LogonTime = $user[$i].IdleTime
-        $user[$i].IdleTime = $user[$i].State
-        $user[$i].State = $user[$i].Id
-        $user[$i].Id = $user[$i].SessionName
-        $user[$i].SessionName = ""
-      }
-    }
-    Write-Output $user
-  }
-}
-
 function Get-Profile {
   & $PROFILE
 }
-
 #endRegion
 
 # =======
 # ALIASES
 # =======
 #region
-Set-Alias -Name GetUsers -Value Get-LoggedOnUsers
-Set-Alias -Name ReloadProfile -Value Get-Profile
-Set-Alias -Name GetLatency -Value Get-Latency
+Set-Alias -Name Clear -Value Get-Profile
 #endRegion
 
 # =======
