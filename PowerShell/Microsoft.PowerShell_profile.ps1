@@ -137,12 +137,8 @@ Clear-Host
 # BANNER
 # ======
 #region
-$random = Get-Random -Maximum 2
 $location = "~\Documents\PowerShell\"
-switch ($random) {
-  0 { Get-Content "$location\kingkairos.txt" }
-  1 { Get-Content "$location\crowns.txt" }
-}
+Get-Content "$location\kingkairos.txt"
 #endRegion
 
 # ==========
