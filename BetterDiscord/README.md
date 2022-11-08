@@ -1,1 +1,0 @@
-To use this config for BetterDiscord, please put it in this location: %APPDATA%\BetterDiscord\themes

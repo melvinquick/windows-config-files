@@ -1,0 +1,1 @@
+To use this theme for BetterDiscord, please put it in this location: %APPDATA%\BetterDiscord\themes
