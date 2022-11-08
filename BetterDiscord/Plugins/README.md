@@ -1,0 +1,1 @@
+To use these plugins for BetterDiscord, please put them in this location: %APPDATA%\BetterDiscord\plugins
