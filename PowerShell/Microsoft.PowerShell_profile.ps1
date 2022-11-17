@@ -2,9 +2,16 @@
 # FUNCTIONS
 # =========
 #region
+function Clear-CommandHistory {
+  $null > (Get-PSReadlineOption).HistorySavePath
+}
+
 function Get-CurrentUsers {
   param (
-    $ComputerName
+    # Computer Name, IP Address, or URL you'd like to ping (default is localhost)
+    [Parameter (Mandatory = $false)]
+    [string]
+    $ComputerName = "localhost"
   )
 
   # variables
@@ -12,35 +19,22 @@ function Get-CurrentUsers {
   $user = @()
 
   # main
-  if ($PSBoundParameters.ContainsKey("ComputerName")) {
-    Write-Host "`nComputerName: $computer"
-    $user = (&"query" user /SERVER:$computer) -replace "^[\s]USERNAME[\s]+SESSIONNAME.*$", "" -replace "[\s]{2,}", "," -replace ">", "" | ConvertFrom-Csv -Delimiter "," -Header "Username", "SessionName", "Id", "State", "IdleTime", "LogonTime"
-    for ($i = 0; $i -lt $user.Count; $i++) {
-      if ($null -eq $user[$i].LogonTime) {
-        $user[$i].LogonTime = $user[$i].IdleTime
-        $user[$i].IdleTime = $user[$i].State
-        $user[$i].State = $user[$i].Id
-        $user[$i].Id = $user[$i].SessionName
-        $user[$i].SessionName = ""
-      }
-    }
-    Write-Output $user
-  }
-  else {
+  if ($computer -eq "localhost") {
     $computer = HOSTNAME.EXE
-    Write-Host "`nComputerName: $computer"
-    $user = (&"query" user) -replace "^[\s]USERNAME[\s]+SESSIONNAME.*$", "" -replace "[\s]{2,}", "," -replace ">", "" | ConvertFrom-Csv -Delimiter "," -Header "Username", "SessionName", "Id", "State", "IdleTime", "LogonTime"
-    for ($i = 0; $i -lt $user.Count; $i++) {
-      if ($null -eq $user[$i].LogonTime) {
-        $user[$i].LogonTime = $user[$i].IdleTime
-        $user[$i].IdleTime = $user[$i].State
-        $user[$i].State = $user[$i].Id
-        $user[$i].Id = $user[$i].SessionName
-        $user[$i].SessionName = ""
-      }
-    }
-    Write-Output $user
   }
+
+  Write-Host "`nComputerName: $computer"
+  $user = (&"query" user /SERVER:$computer) -replace "^[\s]USERNAME[\s]+SESSIONNAME.*$", "" -replace "[\s]{2,}", "," -replace ">", "" | ConvertFrom-Csv -Delimiter "," -Header "Username", "SessionName", "Id", "State", "IdleTime", "LogonTime"
+  for ($i = 0; $i -lt $user.Count; $i++) {
+    if ($null -eq $user[$i].LogonTime) {
+      $user[$i].LogonTime = $user[$i].IdleTime
+      $user[$i].IdleTime = $user[$i].State
+      $user[$i].State = $user[$i].Id
+      $user[$i].Id = $user[$i].SessionName
+      $user[$i].SessionName = ""
+    }
+  }
+  Write-Output $user
 }
 
 function Get-Latency {
