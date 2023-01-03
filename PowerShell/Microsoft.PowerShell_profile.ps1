@@ -1,3 +1,10 @@
+# =======
+# IMPORTS
+# =======
+#region
+Import-Module -Name PSWindowsUpdate
+#endRegion
+
 # =========
 # FUNCTIONS
 # =========
