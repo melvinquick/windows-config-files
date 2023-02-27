@@ -4,7 +4,7 @@
 ; Variables
 localappdata := EnvGet("LocalAppData")
 alacritty := "C:\Program Files\Alacritty\alacritty.exe"
-brave := localappdata . "\BraveSoftware\Brave-Browser\Application\brave.exe"
+browser := "C:\Program Files\Mozilla Firefox\firefox.exe"
 discord := localappdata . "\Discord\Update.exe --processStart Discord.exe"
 googlemessages := localappdata . "\BraveSoftware\Brave-Browser\Application\chrome_proxy.exe --profile-directory=Default --app-id=hpfldicfbfomlpcikngkocigghgafkph"
 vscode := localappdata . "\Programs\Microsoft VS Code\Code.exe"
@@ -19,7 +19,7 @@ cttwinutil := "pwsh.exe -command `"IRM christitus.com/win | IEX`""
 
 ; Open Brave
 ^2::{
-        Run(brave)
+        Run(browser)
         Return
     }
 
