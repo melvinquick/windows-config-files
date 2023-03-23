@@ -119,7 +119,7 @@ function Get-Profile {
 # ALIASES
 # =======
 #region
-Set-Alias -Name Clear -Value Get-Profile
+Set-Alias -Name Refresh -Value Get-Profile
 #endRegion
 
 # =======
