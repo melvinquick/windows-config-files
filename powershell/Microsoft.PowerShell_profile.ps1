@@ -131,14 +131,6 @@ Set-Location ~
 Clear-Host
 #endRegion
 
-# ======
-# BANNER
-# ======
-#region
-$location = "~\Documents\PowerShell\"
-Get-Content "$location\kingkairos.txt"
-#endRegion
-
 # ==========
 # CHOCOLATEY
 # ==========
