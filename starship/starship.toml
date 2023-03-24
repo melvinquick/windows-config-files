@@ -1,124 +1,59 @@
 format = """
-[](#44475a)\
+[](fg:#6272A4)\
 $username\
-[](bg:#6272a4 fg:#44475a)\
+[](fg:#6272A4 bg:#FF79C6)\
 $directory\
-[](fg:#6272a4 bg:#ff5555)\
+[](fg:#FF79C6 bg:#FFB86C)\
 $git_branch\
 $git_status\
-[](fg:#ff5555 bg:#ff79C6)\
-$c\
-$elixir\
-$elm\
-$golang\
+[](fg:#FFB86C bg:#8BE9FD)\
 $haskell\
-$java\
-$julia\
-$nodejs\
-$nim\
-$rust\
-[](fg:#ff79C6 bg:#bd93f9)\
-$docker_context\
-[](fg:#bd93f9 bg:#8be9fd)\
+$python\
+[](fg:#8BE9FD bg:#BD93F9)\
 $time\
-[ ](fg:#8be9fd)\
+[ ](fg:#BD93F9)\
 """
 
 # Disable the blank line at the start of the prompt
-# add_newline = false
+add_newline = true
 
-# You can also replace your username with a neat symbol like  to save some space
 [username]
 show_always = true
-style_user = "bg:#44475a"
-style_root = "bg:#44475a"
+style_user = "bg:#6272A4"
+style_root = "bg:#6272A4"
 format = '[$user ]($style)'
+disabled = false
 
 [directory]
-style = "bg:#6272a4"
+style = "bg:#FF79C6"
 format = "[ $path ]($style)"
 truncation_length = 3
 truncation_symbol = "…/"
 
-# Here is how you can shorten some long paths by text replacement
-# similar to mapped_locations in Oh My Posh:
 [directory.substitutions]
 "Documents" = " "
 "Downloads" = " "
 "Music" = " "
 "Pictures" = " "
-# Keep in mind that the order matters. For example:
-# "Important Documents" = "  "
-# will not be replaced, because "Documents" was already substituted before.
-# So either put "Important Documents" before "Documents" or use the substituted version:
-# "Important  " = "  "
-
-[c]
-symbol = " "
-style = "bg:#ff79C6"
-format = '[[ $symbol ($version) ](bg:#ff79C6)]($style)'
-
-[docker_context]
-symbol = " "
-style = "bg:#bd93f9"
-format = '[[ $symbol $context ](bg:#bd93f9)]($style) $path'
-
-[elixir]
-symbol = " "
-style = "bg:#ff79C6"
-format = '[[ $symbol ($version) ](bg:#ff79C6)]($style)'
-
-[elm]
-symbol = " "
-style = "bg:#ff79C6"
-format = '[[ $symbol ($version) ](bg:#ff79C6)]($style)'
 
 [git_branch]
-symbol = ""
-style = "bg:#ff5555"
-format = '[[ $symbol $branch ](bg:#ff5555)]($style)'
+style = "bg:#FFB86C"
+format = '[ $symbol $branch ]($style)'
 
 [git_status]
-style = "bg:#ff5555"
-format = '[[($all_status$ahead_behind )](bg:#ff5555)]($style)'
-
-[golang]
-symbol = " "
-style = "bg:#ff79C6"
-format = '[[ $symbol ($version) ](bg:#ff79C6)]($style)'
+style = "bg:#FFB86C"
+format = '[$all_status$ahead_behind ]($style)'
 
 [haskell]
-symbol = " "
-style = "bg:#ff79C6"
-format = '[[ $symbol ($version) ](bg:#ff79C6)]($style)'
+style = "bg:#8BE9FD"
+format = '[ $symbol ($version) ]($style)'
 
-[java]
-symbol = " "
-style = "bg:#ff79C6"
-format = '[[ $symbol ($version) ](bg:#ff79C6)]($style)'
-
-[julia]
-symbol = " "
-style = "bg:#ff79C6"
-format = '[[ $symbol ($version) ](bg:#ff79C6)]($style)'
-
-[nodejs]
-symbol = ""
-style = "bg:#ff79C6"
-format = '[[ $symbol ($version) ](bg:#ff79C6)]($style)'
-
-[nim]
-symbol = " "
-style = "bg:#ff79C6"
-format = '[[ $symbol ($version) ](bg:#ff79C6)]($style)'
-
-[rust]
-symbol = ""
-style = "bg:#ff79C6"
-format = '[[ $symbol ($version) ](bg:#ff79C6)]($style)'
+[python]
+style = "bg:#8BE9FD"
+format = '[ $symbol ($version) ]($style)'
 
 [time]
 disabled = false
 time_format = "%R" # Hour:Minute Format
-style = "bg:#8be9fd"
-format = '[[ ♥ $time ](bg:#8be9fd)]($style)'
+style = "bg:#BD93F9"
+format = '[ $time ]($style)'
