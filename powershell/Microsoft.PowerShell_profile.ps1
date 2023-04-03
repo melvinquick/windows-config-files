@@ -3,6 +3,7 @@
 # =======
 #region
 Import-Module -Name PSWindowsUpdate
+Import-Module -Name PSWordCloud
 #endRegion
 
 # =========
