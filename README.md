@@ -1,3 +1,5 @@
 # Config Files
 
-This is my personal set of config files for applications I use.
+## Purpose
+
+To have an easy way to get back my personal set of config files I use in Windows when moving to a new computer.
