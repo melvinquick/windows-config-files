@@ -1,4 +1,4 @@
-# Config Files
+# Windows Config Files
 
 ## Purpose
 
