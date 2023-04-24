@@ -1,9 +1,12 @@
 ﻿#Requires AutoHotkey v2.0
 #SingleInstance Force
+#MaxThreadsPerHotkey 3
 
 ; Variables
 localappdata := EnvGet("LocalAppData")
 A_Home := "C:\users\" . A_UserName
+clickdelay := 10
+Toggle := False
 alacritty := "C:\Program Files\Alacritty\alacritty.exe"
 browser := "C:\Program Files\Mozilla Firefox\firefox.exe"
 discord := localappdata . "\Discord\Update.exe --processStart Discord.exe"
@@ -12,6 +15,17 @@ vscode := localappdata . "\Programs\Microsoft VS Code\Code.exe"
 githubdesktop := localappdata . "\GitHubDesktop\GitHubDesktop.exe"
 steam := "C:\Program Files (x86)\Steam\steam.exe"
 cttwinutil := "pwsh.exe -command `"IRM christitus.com/win | IEX`""
+
+; Autoclicker
+ESC::{
+    global
+    Toggle := !Toggle
+    While (Toggle) {
+        Click
+        Sleep clickDelay
+    }
+    Return
+}
 
 ; Open Alacritty
 ^1::{
