@@ -17,7 +17,7 @@ steam := "C:\Program Files (x86)\Steam\steam.exe"
 cttwinutil := "pwsh.exe -command `"IRM christitus.com/win | IEX`""
 
 ; Autoclicker
-ESC::{
++ESC::{
     global
     Toggle := !Toggle
     While (Toggle) {
