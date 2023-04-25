@@ -22,7 +22,7 @@ cttwinutil := "pwsh.exe -command `"IRM christitus.com/win | IEX`""
     Toggle := !Toggle
     While (Toggle) {
         Click
-        Sleep clickDelay
+        Sleep clickdelay
     }
     Return
 }
