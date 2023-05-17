@@ -7,13 +7,13 @@ localappdata := EnvGet("LocalAppData")
 A_Home := "C:\users\" . A_UserName
 clickdelay := 10
 Toggle := False
-alacritty := "C:\Program Files\Alacritty\alacritty.exe"
+alacritty := A_Home . "\scoop\apps\alacritty\current\alacritty.exe"
 browser := "C:\Program Files\Mozilla Firefox\firefox.exe"
 discord := localappdata . "\Discord\Update.exe --processStart Discord.exe"
 googlemessages := A_Home . "\scoop\apps\android-messages\current\Android Messages.exe"
 vscode := localappdata . "\Programs\Microsoft VS Code\Code.exe"
 githubdesktop := localappdata . "\GitHubDesktop\GitHubDesktop.exe"
-steam := "C:\Program Files (x86)\Steam\steam.exe"
+steam := A_Home . "\scoop\apps\steam\current\steam.exe"
 cttwinutil := "pwsh.exe -command `"IRM christitus.com/win | IEX`""
 
 ; Autoclicker
