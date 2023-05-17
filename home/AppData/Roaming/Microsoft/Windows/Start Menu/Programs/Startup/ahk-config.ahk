@@ -3,29 +3,15 @@
 #MaxThreadsPerHotkey 3
 
 ; Variables
-localappdata := EnvGet("LocalAppData")
 A_Home := "C:\users\" . A_UserName
-clickdelay := 10
-Toggle := False
 alacritty := A_Home . "\scoop\apps\alacritty\current\alacritty.exe"
-browser := "C:\Program Files\Mozilla Firefox\firefox.exe"
-discord := localappdata . "\Discord\Update.exe --processStart Discord.exe"
+browser := A_Home . "\scoop\apps\firefox\current\firefox.exe"
+discord := A_Home . "\scoop\apps\discord\current\discord-portable.exe"
 googlemessages := A_Home . "\scoop\apps\android-messages\current\Android Messages.exe"
-vscode := localappdata . "\Programs\Microsoft VS Code\Code.exe"
-githubdesktop := localappdata . "\GitHubDesktop\GitHubDesktop.exe"
+vscode := A_Home . "\scoop\apps\vscode\currentCode.exe"
+githubdesktop := A_Home . "\scoop\apps\github\current\GitHubDesktop.exe"
 steam := A_Home . "\scoop\apps\steam\current\steam.exe"
 cttwinutil := "pwsh.exe -command `"IRM christitus.com/win | IEX`""
-
-; Autoclicker
-+ESC::{
-    global
-    Toggle := !Toggle
-    While (Toggle) {
-        Click
-        Sleep clickdelay
-    }
-    Return
-}
 
 ; Open Alacritty
 ^1::{
