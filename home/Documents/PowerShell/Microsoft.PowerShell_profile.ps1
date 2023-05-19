@@ -5,6 +5,14 @@
 Import-Module -Name ps2exe
 Import-Module -Name PSWindowsUpdate
 Import-Module -Name PSWordCloud
+
+# --- Chocolatey Check and Import --- #
+#region
+$ChocolateyProfile = "$env:ChocolateyInstall\helpers\chocolateyProfile.psm1"
+if (Test-Path($ChocolateyProfile)) {
+  Import-Module "$ChocolateyProfile"
+}
+#endRegion
 #endRegion
 
 # =========
@@ -131,14 +139,4 @@ Set-Alias -Name Refresh -Value Get-Profile
 Invoke-Expression (&starship init powershell)
 Set-Location ~
 Clear-Host
-#endRegion
-
-# ==========
-# CHOCOLATEY
-# ==========
-#region
-$ChocolateyProfile = "$env:ChocolateyInstall\helpers\chocolateyProfile.psm1"
-if (Test-Path($ChocolateyProfile)) {
-  Import-Module "$ChocolateyProfile"
-}
 #endRegion
