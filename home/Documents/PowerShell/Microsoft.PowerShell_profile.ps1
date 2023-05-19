@@ -2,6 +2,7 @@
 # IMPORTS
 # =======
 #region
+Import-Module -Name ps2exe
 Import-Module -Name PSWindowsUpdate
 Import-Module -Name PSWordCloud
 #endRegion
