@@ -2,17 +2,9 @@
 # IMPORTS
 # =======
 #region
-Import-Module -Name ps2exe
 Import-Module -Name PSWindowsUpdate
 Import-Module -Name PSWordCloud
-
-# --- Chocolatey Check and Import --- #
-#region
-$ChocolateyProfile = "$env:ChocolateyInstall\helpers\chocolateyProfile.psm1"
-if (Test-Path($ChocolateyProfile)) {
-  Import-Module "$ChocolateyProfile"
-}
-#endRegion
+Import-Module -Name "$env:ChocolateyInstall\helpers\chocolateyProfile.psm1" -ErrorAction SilentlyContinue
 #endRegion
 
 # =========
