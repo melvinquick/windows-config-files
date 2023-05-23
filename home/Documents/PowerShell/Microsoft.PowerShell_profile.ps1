@@ -2,6 +2,7 @@
 # IMPORTS
 # =======
 #region
+Import-Module -Name Microsoft.Graph
 Import-Module -Name PSWindowsUpdate
 Import-Module -Name PSWordCloud
 Import-Module -Name "$env:ChocolateyInstall\helpers\chocolateyProfile.psm1" -ErrorAction SilentlyContinue
