@@ -49,10 +49,10 @@ live_config_reload: true
 
 # --- Shell Settings --- #
 shell:
-  program: nu
+  program: nu -e cd
 
 # --- Startup Directory --- #
-working_directory: '~'
+working_directory: None
 
 # --- Key Bindings --- #
 key_bindings:
