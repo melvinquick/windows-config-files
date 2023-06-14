@@ -43,7 +43,7 @@ live_config_reload: true
 
 # --- Shell Settings --- #
 shell:
-  program: nu -e cd
+  program: pwsh -NoLogo
 
 # --- Startup Directory --- #
 working_directory: None
