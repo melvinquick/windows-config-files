@@ -5,7 +5,7 @@
 ; Variables
 A_Home := "C:\users\" . A_UserName
 alacritty := A_Home . "\scoop\apps\alacritty\current\alacritty.exe"
-browser := A_Home . "\scoop\apps\firefox\current\firefox.exe"
+browser := A_Home . "\scoop\apps\brave\current\brave.exe"
 discord := A_Home . "\scoop\apps\discord\current\discord-portable.exe"
 googlemessages := A_Home . "\scoop\apps\android-messages\current\Android Messages.exe"
 vscode := A_Home . "\scoop\apps\vscode\current\Code.exe"
