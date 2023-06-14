@@ -4,7 +4,7 @@
 
 ; Variables
 A_Home := "C:\users\" . A_UserName
-alacritty := A_Home . "\scoop\apps\alacritty\current\alacritty.exe"
+terminal := A_Home . "\scoop\apps\alacritty\current\alacritty.exe"
 browser := A_Home . "\scoop\apps\brave\current\brave.exe"
 discord := A_Home . "\scoop\apps\discord\current\discord-portable.exe"
 googlemessages := A_Home . "\scoop\apps\android-messages\current\Android Messages.exe"
@@ -15,7 +15,7 @@ cttwinutil := "pwsh.exe -command `"IRM christitus.com/win | IEX`""
 
 ; Open Alacritty
 ^1::{
-    Run("*RunAs " alacritty)
+    Run("*RunAs " terminal)
     Return
 }
 
