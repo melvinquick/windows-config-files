@@ -8,7 +8,7 @@ terminal := A_Home . "\scoop\apps\alacritty\current\alacritty.exe"
 browser := A_Home . "\scoop\apps\brave\current\brave.exe"
 discord := A_Home . "\scoop\apps\discord\current\discord-portable.exe"
 googlemessages := A_Home . "\scoop\apps\android-messages\current\Android Messages.exe"
-vscode := A_Home . "\scoop\apps\vscode\current\Code.exe"
+ide := A_Home . "\scoop\apps\vscode\current\Code.exe"
 githubdesktop := A_Home . "\scoop\apps\github\current\GitHubDesktop.exe"
 steam := A_Home . "\scoop\apps\steam\current\steam.exe"
 cttwinutil := "pwsh.exe -command `"IRM christitus.com/win | IEX`""
@@ -39,7 +39,7 @@ cttwinutil := "pwsh.exe -command `"IRM christitus.com/win | IEX`""
 
 ; Open VS Code
 ^5::{
-    Run(vscode)
+    Run(ide)
     Return
 }
 
