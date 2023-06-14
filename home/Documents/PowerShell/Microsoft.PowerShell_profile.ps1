@@ -60,7 +60,7 @@ function Get-Latency {
     [string]
     $pingAddress = "localhost",
 
-    # The location you'd like to output to be saved (default is ~\Documents)
+    # The location you'd like the output to be saved (default is ~\Documents)
     [Parameter (Mandatory = $false)]
     [string]
     $outputLocation = "~\Documents",
