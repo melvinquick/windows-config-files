@@ -11,7 +11,6 @@ googlemessages := A_Home . "\AppData\Local\Programs\Android Messages\Android Mes
 ide := A_Home . "\AppData\Local\Programs\Microsoft VS Code\Code.exe"
 githubdesktop := A_Home . "\AppData\Local\GitHubDesktop\GitHubDesktop.exe"
 steam := "C:\Program Files (x86)\Steam\steam.exe"
-email := "C:\Program Files\Mozilla Thunderbird\thunderbird.exe"
 cttwinutil := "pwsh.exe -command `"IRM christitus.com/win | IEX`""
 
 ; Open Alacritty
@@ -56,14 +55,8 @@ cttwinutil := "pwsh.exe -command `"IRM christitus.com/win | IEX`""
     Return
 }
 
-; Open Email
-^8::{
-    Run("*RunAs " email)
-    Return
-}
-
 ; Open Chris Titus Tech's Windows Utility
-^9::{
+^8::{
     Run("*RunAs " cttwinutil)
     Return
 }
