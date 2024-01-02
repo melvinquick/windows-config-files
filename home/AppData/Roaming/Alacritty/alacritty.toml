@@ -1,0 +1,33 @@
+import = ["~/appdata/roaming/alacritty/dracula.toml"]
+
+shell = { program = "C:/Program Files/PowerShell/7/pwsh.exe", args = ["-NoLogo",] }
+
+working_directory = "None"
+live_config_reload = true
+
+[env]
+WINIT_X11_SCALE_FACTOR = "1.0"
+
+[window]
+opacity = 0.9
+padding = { x = 14, y = 4 }
+dynamic_padding = false
+decorations = "full"
+startup_mode = "Maximized"
+title = "Alacritty"
+dynamic_title = true
+decorations_theme_variant = "None"
+
+[scrolling]
+history = 10000
+multiplier = 3
+
+[font]
+normal = { family = "FiraCode Nerd Font", style = "Regular" }
+bold = { family = "FiraCode Nerd Font", style = "Bold" }
+italic = { family = "FiraCode Nerd Font", style = "Italic" }
+bold_italic = { family = "FiraCode Nerd Font", style = "Bold italic" }
+size = 11.25
+offset = { x = 0, y = 0 }
+glyph_offset = { x = 0, y = 0 }
+builtin_box_drawing = true
