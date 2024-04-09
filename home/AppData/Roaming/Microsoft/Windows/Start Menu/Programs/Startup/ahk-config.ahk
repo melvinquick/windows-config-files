@@ -7,6 +7,7 @@ A_Home := "C:\users\" . A_UserName
 terminal := "C:\Program Files\Alacritty\alacritty.exe"
 browser := A_Home . "\AppData\Local\BraveSoftware\Brave-Browser\Application\brave.exe"
 discord := A_Home . "\AppData\Local\Discord\Update.exe --processStart Discord.exe"
+email := A_Home . "\AppData\Local\Programs\ElectronMail\ElectronMail.exe"
 messages := A_Home . "\AppData\Local\Programs\Android Messages\Android Messages.exe"
 ide := A_Home . "\AppData\Local\Programs\Microsoft VS Code\Code.exe"
 githubdesktop := A_Home . "\AppData\Local\GitHubDesktop\GitHubDesktop.exe"
@@ -31,32 +32,38 @@ cttwinutil := "pwsh.exe -command `"IRM christitus.com/win | IEX`""
     Return
 }
 
-; Open Messages
+; Open Email Client
 ^4::{
+    Run(email)
+    Return
+}
+
+; Open Messages
+^5::{
     Run(messages)
     Return
 }
 
 ; Open IDE
-^5::{
+^6::{
     Run(ide)
     Return
 }
 
 ; Open GitHub Desktop
-^6::{
+^7::{
     Run(githubdesktop)
     Return
 }
 
 ; Open Steam
-^7::{
+^8::{
     Run("*RunAs " steam)
     Return
 }
 
 ; Open Chris Titus Tech's Windows Utility
-^8::{
+^9::{
     Run("*RunAs " cttwinutil)
     Return
 }
