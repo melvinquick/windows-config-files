@@ -2,8 +2,6 @@
 # IMPORTS
 # =======
 #region
-Install-Module -Name PSWindowsUpdate
-Install-Module -Name PSWordCloud
 Install-Module -Name "$env:ChocolateyInstall\helpers\chocolateyProfile.psm1" -ErrorAction SilentlyContinue
 #endRegion
 
