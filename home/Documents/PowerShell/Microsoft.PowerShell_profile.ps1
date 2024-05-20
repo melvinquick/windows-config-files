@@ -1,12 +1,8 @@
-# * =======
 # * IMPORTS
-# * =======
 
 Install-Module -Name "$env:ChocolateyInstall\helpers\chocolateyProfile.psm1" -ErrorAction SilentlyContinue
 
-# * =========
 # * FUNCTIONS
-# * =========
 
 function Clear-CommandHistory {
   $null > (Get-PSReadlineOption).HistorySavePath
@@ -113,15 +109,11 @@ function Get-Profile {
   & $PROFILE
 }
 
-# * =======
 # * ALIASES
-# * =======
 
 Set-Alias -Name Refresh -Value Get-Profile
 
-# * =======
 # * STARTUP
-# * =======
 
 Invoke-Expression (&starship init powershell)
 Set-Location ~
