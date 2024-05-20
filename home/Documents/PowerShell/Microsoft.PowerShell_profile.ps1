@@ -116,5 +116,6 @@ Set-Alias -Name Refresh -Value Get-Profile
 # * STARTUP
 
 Invoke-Expression (&starship init powershell)
-Set-Location ~
+Set-Location $HOME
 Clear-Host
+fastfetch.exe --config $HOME\.config\fastfetch.jsonc
