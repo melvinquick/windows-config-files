@@ -1,31 +1,33 @@
 format = """
-[](fg:#6272A4)\
+[](fg:#4C566A)\
 $username\
-[](fg:#6272A4 bg:#FF79C6)\
+[](fg:#4C566A bg:#8FBCBB)\
 $directory\
-[](fg:#FF79C6 bg:#FFB86C)\
-$git_branch\
-$git_status\
-[](fg:#FFB86C bg:#8BE9FD)\
-$haskell\
+[](fg:#8FBCBB bg:#81A1C1)\
 $python\
-[](fg:#8BE9FD bg:#BD93F9)\
+[](fg:#81A1C1 bg:#5E81AC)\
 $time\
-[ ](fg:#BD93F9)\
+[ ](fg:#5E81AC)\
 """
 
 # Disable the blank line at the start of the prompt
 add_newline = true
 
+[colors]
+nord3 = "#4C566A"
+nord7 = "#8FBCBB"
+nord9 = "#81A1C1"
+nord10 = "#5E81AC"
+
 [username]
 show_always = true
-style_user = "bg:#6272A4"
-style_root = "bg:#6272A4"
+style_user = "bg:#4C566A"
+style_root = "bg:#4C566A"
 format = '[$user ]($style)'
 disabled = false
 
 [directory]
-style = "bg:#FF79C6"
+style = "bg:#8FBCBB"
 format = "[ $path ]($style)"
 truncation_length = 3
 truncation_symbol = "…/"
@@ -36,24 +38,12 @@ truncation_symbol = "…/"
 "Music" = " "
 "Pictures" = " "
 
-[git_branch]
-style = "bg:#FFB86C"
-format = '[ $symbol $branch ]($style)'
-
-[git_status]
-style = "bg:#FFB86C"
-format = '[$all_status$ahead_behind ]($style)'
-
-[haskell]
-style = "bg:#8BE9FD"
-format = '[ $symbol ($version) ]($style)'
-
 [python]
-style = "bg:#8BE9FD"
+style = "bg:#81A1C1"
 format = '[ $symbol ($version) ]($style)'
 
 [time]
 disabled = false
 time_format = "%R" # Hour:Minute Format
-style = "bg:#BD93F9"
+style = "bg:#5E81AC"
 format = '[ $time ]($style)'
