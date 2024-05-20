@@ -1,34 +1,83 @@
 {
   "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
+  "display": {
+    "separator": "  "
+  },
   "modules": [
-    "title",
-    "separator",
-    "os",
-    "host",
-    "kernel",
-    "uptime",
-    "packages",
-    "shell",
-    "display",
-    "de",
-    "wm",
-    "wmtheme",
-    "theme",
-    "icons",
-    "font",
-    "cursor",
-    "terminal",
-    "terminalfont",
-    "cpu",
-    "gpu",
-    "memory",
-    "swap",
-    "disk",
-    "localip",
-    "battery",
-    "poweradapter",
-    "locale",
-    "break",
-    "colors"
+    {
+      "type": "custom", // HardwareStart
+      "format": "┌─────────────── \u001b[1mHardware Information\u001b[0m ───────────────┐"
+    },
+    {
+      "type": "cpu",
+      "key": "  󰻠"
+    },
+    {
+      "type": "gpu",
+      "key": "  󰍛"
+    },
+    {
+      "type": "memory",
+      "key": "  󰑭"
+    },
+    {
+      "type": "display",
+      "key": "  󰍹"
+    },
+    {
+      "type": "sound",
+      "key": "  "
+    },
+    {
+      "type": "gamepad",
+      "key": "  "
+    },
+    {
+      "type": "custom", // SoftwareStart
+      "format": "├─────────────── \u001b[1mSoftware Information\u001b[0m ───────────────┤"
+    },
+    {
+      "type": "title",
+      "key": "  ",
+      "format": "{1}@{2}"
+    },
+    {
+      "type": "os",
+      "key": "  " // Just get your distro's logo off nerdfonts.com
+    },
+    {
+      "type": "shell",
+      "key": "  "
+    },
+    {
+      "type": "terminal",
+      "key": "  "
+    },
+    {
+      "type": "theme",
+      "key": "  󰉼"
+    },
+    {
+      "type": "uptime",
+      "key": "  󰅐"
+    },
+    {
+      "type": "localip",
+      "key": "  󰩟",
+      "compact": true
+    },
+    {
+      "type": "publicip",
+      "key": "  󰩠"
+    },
+    {
+      "type": "custom", // InformationEnd
+      "format": "└────────────────────────────────────────────────────┘"
+    },
+    {
+      "type": "colors",
+      "paddingLeft": 2,
+      "symbol": "circle"
+    }
   ]
 }
