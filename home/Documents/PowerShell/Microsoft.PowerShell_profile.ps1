@@ -1,31 +1,30 @@
-# =======
-# IMPORTS
-# =======
-#region
-Install-Module -Name "$env:ChocolateyInstall\helpers\chocolateyProfile.psm1" -ErrorAction SilentlyContinue
-#endRegion
+# * =======
+# * IMPORTS
+# * =======
 
-# =========
-# FUNCTIONS
-# =========
-#region
+Install-Module -Name "$env:ChocolateyInstall\helpers\chocolateyProfile.psm1" -ErrorAction SilentlyContinue
+
+# * =========
+# * FUNCTIONS
+# * =========
+
 function Clear-CommandHistory {
   $null > (Get-PSReadlineOption).HistorySavePath
 }
 
 function Get-CurrentUsers {
   param (
-    # Computer Name, IP Address, or URL you'd like to ping (default is localhost)
+    # * Computer Name, IP Address, or URL you'd like to ping (default is localhost)
     [Parameter (Mandatory = $false)]
     [string]
     $ComputerName = "localhost"
   )
 
-  # variables
+  # * variables
   $computer = $ComputerName
   $user = @()
 
-  # main
+  # * main
   if ($computer -eq "localhost") {
     $computer = HOSTNAME.EXE
   }
@@ -46,34 +45,34 @@ function Get-CurrentUsers {
 
 function Get-Latency {
   param (
-    # Time you'd like the function to stop running in 24 hour time (good values are 1, 2, 3, ..., 24) (default is 24)
+    # * Time you'd like the function to stop running in 24 hour time (good values are 1, 2, 3, ..., 24) (default is 24)
     [Parameter (Mandatory = $false)]
     [ValidateSet (1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24)]
     [int]
     $endTime = 24,
 
-    # Computer Name, IP Address, or URL you'd like to ping (default is localhost)
+    # * Computer Name, IP Address, or URL you'd like to ping (default is localhost)
     [Parameter (Mandatory = $false)]
     [string]
     $pingAddress = "localhost",
 
-    # The location you'd like the output to be saved (default is ~\Documents)
+    # * The location you'd like the output to be saved (default is ~\Documents)
     [Parameter (Mandatory = $false)]
     [string]
     $outputLocation = "~\Documents",
 
-    # The name and type you'd like the output file to be saved as
+    # * The name and type you'd like the output file to be saved as
     [Parameter (Mandatory = $false)]
     [string]
     $outputName = "latency.csv",
 
-    # The amount of time you'd like to wait between pings
+    # * The amount of time you'd like to wait between pings
     [Parameter (Mandatory = $false)]
     [int]
     $waitTime = 10
   )
 
-  # Variables
+  # * Variables
   $data = New-Object -TypeName psobject
   $dataCollection = @()
   $date = ""
@@ -81,30 +80,30 @@ function Get-Latency {
   $output = "$outputLocation\$outputName"
   $time = (Get-Date).Hour
 
-  # Main
+  # * Main
   while ($time -lt $endTime) {
 
-    # Get the date and then add it to $data
+    # * Get the date and then add it to $data
     $date = Get-Date
     $data | Add-Member -MemberType NoteProperty -Name Date -Value $date
 
-    # Ping entered computer/ip/url and select only the response time then add it to $data
+    # * Ping entered computer/ip/url and select only the response time then add it to $data
     $latency = Test-Connection -Ping $pingAddress -Count 1 | ForEach-Object { $_.Latency }
     $data | Add-Member -MemberType NoteProperty -Name Latency -Value $latency
       
-    # Put $data in $dataCollection
+    # * Put $data in $dataCollection
     $dataCollection += $data
 
-    # Export to CSV
+    # * Export to CSV
     $dataCollection | Export-Csv -LiteralPath $output
 
-    # Reset $data back to a new PSObject
+    # * Reset $data back to a new PSObject
     $data = New-Object -TypeName psobject
 
-    # Sleep for 10 seconds
+    # * Sleep for 10 seconds
     Start-Sleep -Seconds $waitTime
       
-    # Set time variable to check for end condition
+    # * Set time variable to check for end condition
     $time = (Get-Date).Hour
 
   }
@@ -113,20 +112,17 @@ function Get-Latency {
 function Get-Profile {
   & $PROFILE
 }
-#endRegion
 
-# =======
-# ALIASES
-# =======
-#region
+# * =======
+# * ALIASES
+# * =======
+
 Set-Alias -Name Refresh -Value Get-Profile
-#endRegion
 
-# =======
-# STARTUP
-# =======
-#region
+# * =======
+# * STARTUP
+# * =======
+
 Invoke-Expression (&starship init powershell)
 Set-Location ~
 Clear-Host
-#endRegion
