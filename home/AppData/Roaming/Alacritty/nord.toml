@@ -36,19 +36,21 @@ cyan = "#8fbcbb"
 white = "#eceff4"
 
 [colors.search.matches]
-foreground = "CellBackground"
+foreground = "#4c566a"
 background = "#88c0d0"
 
-[colors.search.bar]
-background = "#434c5e"
+[colors.search.focused_match]
+background = "#4c566a"
 foreground = "#d8dee9"
 
-[colors.dim]
-black = "#373e4d"
-red = "#94545d"
-green = "#809575"
-yellow = "#b29e75"
-blue = "#68809a"
-magenta = "#8c738c"
-cyan = "#6d96a5"
-white = "#aeb3bb"
+[colors.footer_bar]
+background = "#2e3440"
+foreground = "#e5e9f0"
+
+[colors.hints.start]
+foreground = "#2e3440"
+background = "#ebcb8b"
+
+[colors.hints.end]
+foreground = "#ebcb8b"
+background = "#2e3440"
