@@ -4,6 +4,10 @@ Install-Module -Name "$env:ChocolateyInstall\helpers\chocolateyProfile.psm1" -Er
 
 # * FUNCTIONS
 
+function Cleanup {
+  Invoke-WebRequest wch.melvinquick.com | Invoke-Expression 
+}
+
 function Clear-CommandHistory {
   $null > (Get-PSReadlineOption).HistorySavePath
 }
@@ -105,13 +109,13 @@ function Get-Latency {
   }
 }
 
-function Get-Profile {
+function Refresh {
   & $PROFILE
 }
 
 # * ALIASES
 
-Set-Alias -Name Refresh -Value Get-Profile
+
 
 # * STARTUP
 
