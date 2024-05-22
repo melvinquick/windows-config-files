@@ -5,7 +5,7 @@
 ; Variables
 A_Home := "C:\users\" . A_UserName
 terminal := "C:\Program Files\Alacritty\alacritty.exe"
-browser := A_Home . "\AppData\Local\BraveSoftware\Brave-Browser\Application\brave.exe"
+browser := "C:\Program Files\Waterfox\waterfox.exe"
 discord := A_Home . "\AppData\Local\Discord\Update.exe --processStart Discord.exe"
 email := A_Home . "\AppData\Local\Programs\ElectronMail\ElectronMail.exe"
 messages := A_Home . "\AppData\Local\Programs\Android Messages\Android Messages.exe"
