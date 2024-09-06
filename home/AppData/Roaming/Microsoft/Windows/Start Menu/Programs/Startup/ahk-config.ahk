@@ -7,6 +7,7 @@ A_Home := "C:\users\" . A_UserName
 terminal := "C:\Program Files\Alacritty\alacritty.exe"
 browser := "C:\Program Files\Waterfox\waterfox.exe"
 discord := A_Home . "\AppData\Local\Discord\Update.exe --processStart Discord.exe"
+vesktop := A_Home . "\scoop\apps\vesktop\current\Vesktop.exe"
 email := A_Home . "\AppData\Local\Programs\ElectronMail\ElectronMail.exe"
 messages := A_Home . "\AppData\Local\Programs\Android Messages\Android Messages.exe"
 ide := A_Home . "\AppData\Local\Programs\Microsoft VS Code\Code.exe"
@@ -25,9 +26,9 @@ cttwinutil := "pwsh.exe -command `"IRM christitus.com/win | IEX`""
     Return
 }
 
-; Open Discord
+; Open Vesktop
 ^3::{
-    Run(discord)
+    Run(vesktop)
     Return
 }
 
