@@ -12,6 +12,7 @@ email := A_Home . "\AppData\Local\Programs\ElectronMail\ElectronMail.exe"
 messages := A_Home . "\AppData\Local\Programs\Android Messages\Android Messages.exe"
 ide := A_Home . "\AppData\Local\Programs\Microsoft VS Code\Code.exe"
 steam := "C:\Program Files (x86)\Steam\steam.exe"
+heroic := A_Home . "\AppData\Local\Programs\heroic\Heroic.exe"
 cttwinutil := "pwsh.exe -command `"IRM christitus.com/win | IEX`""
 
 ; Open Terminal
@@ -56,8 +57,14 @@ cttwinutil := "pwsh.exe -command `"IRM christitus.com/win | IEX`""
     Return
 }
 
-; Open Chris Titus Tech's Windows Utility
+; Open Heroic
 ^8::{
+    Run("*RunAs " heroic)
+    Return
+}
+
+; Open Chris Titus Tech's Windows Utility
+^9::{
     Run("*RunAs " cttwinutil)
     Return
 }
