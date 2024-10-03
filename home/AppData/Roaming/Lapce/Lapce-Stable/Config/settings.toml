@@ -1,0 +1,18 @@
+[editor]
+font-family = "FiraCode Nerd Font"
+
+[terminal]
+# ...
+
+[terminal.default-profile]
+linux = "default"
+macos = "default"
+windows = "pwsh"
+
+[terminal.profiles.default]
+
+[terminal.profiles.pwsh]
+command = "pwsh"
+
+[core]
+color-theme = "Lapce Dark"
