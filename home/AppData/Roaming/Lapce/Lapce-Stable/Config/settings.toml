@@ -1,8 +1,9 @@
 [editor]
 font-family = "FiraCode Nerd Font"
+format-on-save = true
 
 [terminal]
-# ...
+font-family = "FiraCode Nerd Font"
 
 [terminal.default-profile]
 linux = "default"
