@@ -15,4 +15,5 @@ windows = "pwsh"
 command = "pwsh"
 
 [core]
-color-theme = "Lapce Dark"
+color-theme = "Vivid Pastel Dream"
+icon-theme = "Bright Pastel Icons"
