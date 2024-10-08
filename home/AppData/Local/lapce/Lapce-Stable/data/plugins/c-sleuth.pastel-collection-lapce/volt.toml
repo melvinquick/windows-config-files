@@ -1,0 +1,14 @@
+name = "pastel-collection-lapce"
+version = "0.1.0"
+display-name = "Pastel Collection"
+author = "c-sleuth"
+description = "A collection of pastel themes for Lapce"
+icon = "pastel-cat.png"
+repository = "https://github.com/c-sleuth/pastel-collection-lapce"
+color-themes = [
+    "Vibrant Pastel.toml",
+    "Pastel Pale.toml",
+    "Vivid Pastel Dream.toml",
+    "Light Pastel Dawn.toml",
+    "Lively Pastel.toml",
+]

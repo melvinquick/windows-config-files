@@ -1,0 +1,8 @@
+name = "bright-pastel-icons"
+version = "0.0.0"
+display-name = "Bright Pastel Icon Theme"
+author = "c-sleuth"
+description = "Bright Pastel icon theme for Lapce"
+icon = "logo.png"
+repository = "https://github.com/c-sleuth/bright-pastel-icons"
+icon-themes = ["bright-pastel-icons.toml"]
